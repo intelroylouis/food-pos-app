@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  web:
+    build: ./docker/ionic
+    privileged: true
+    tty: true
+    volumes:
+      - ./:/app
+    ports:
+      - 8100:8100
+    container_name: food-pos-app

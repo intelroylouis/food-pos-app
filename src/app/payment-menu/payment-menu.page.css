@@ -1,0 +1,11 @@
+ion-card {
+  display: flex;
+  flex-direction: column;
+  width: 90% !important;
+  margin: 0 !important;
+  height: 300px !important;
+}
+
+.card-font {
+  font-size: 40px !important;
+}

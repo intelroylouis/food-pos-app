@@ -1,0 +1,145 @@
+<ion-split-pane contentId="main">
+  <!--  カート画面 -->
+  <ion-menu contentId="main" side="end" class="cart-menu">
+    <ion-header class="ion-no-border">
+      <ion-text><h1 class="p-2">選択中のクーポン</h1></ion-text>
+    </ion-header>
+    <ion-content>
+      
+      <ion-content fullscreen>
+        <div class="ion-padding offset-cart-footer">
+          <ion-list>
+            <ion-item *ngFor="let p of cartCoupon" class="ion-text-wrap">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="9">
+                    <ion-text class="text-s">{{ p.name }}</ion-text>
+                  </ion-col>
+                  <ion-col size="3" class="ion-text-end">
+                    <ion-text class="text-s">
+                      {{ '&yen;' + (p.discount_price * p.amount).toLocaleString() }}
+                    </ion-text>
+                  </ion-col>
+                </ion-row>
+                <ion-row class=ion-align-items-center>
+                  <ion-col size="2">
+                    <ion-text class="text-s">数量</ion-text>
+                  </ion-col>
+                  <ion-col size="2">
+                    <ion-button (click)="decreaseCartCoupon(p)" expand="block" color="secondary" class="btn-h60">
+                      <ion-text class="text-s"> <fa-icon icon="minus"></fa-icon> </ion-text>
+                    </ion-button>
+                  </ion-col>
+                  <ion-col size="2" class="ion-text-center">
+                    <ion-text class="text-s">{{ p.amount }}</ion-text>
+                  </ion-col>
+                  <ion-col size="2">
+                    <ion-button (click)="increaseCartCoupon(p)" expand="block" color="secondary" class="btn-h60" id="increase-button-{{p.id}}" disabled="{{!p.is_multiple}}">
+                      <ion-text class="text-s"> <fa-icon icon="plus"></fa-icon> </ion-text>
+                    </ion-button>
+                  </ion-col>
+                  <ion-col size="2"></ion-col>
+                  <ion-col size="2">
+                    <ion-button (click)="removeCartCoupon(p)" expand="block" color="secondary" class="btn-h60">
+                      <ion-text class="text-s"> <fa-icon icon="times"></fa-icon> </ion-text>
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-content>
+      <ion-footer class="cart-footer ion-no-border">
+        <ion-grid>
+          <!-- <ion-row>
+            <ion-col size="6">
+              <ion-text class="text-l m-3 cart-footer-text">合計</ion-text>
+            </ion-col>
+            <ion-col size="6" class="ion-text-end">
+              <ion-text class="text-xl m-3">{{ getTotal() | currency: 'JPY' }}</ion-text>
+            </ion-col>
+          </ion-row> -->
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="toItemMenu()" expand="block" size="large" class="btn-h100 m-3">
+                <ion-text class="text-xl">次へ <fa-icon icon="angle-right"></fa-icon></ion-text>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-footer>
+    </ion-content>
+  </ion-menu>
+
+  <!-- 商品選択画面 -->
+  <ion-router-outlet id="main">
+    <!-- 商品選択 -->
+    <ion-content>
+      <!-- カテゴリー選択 -->
+      <ion-header [translucent]="true" class="ion-no-border mb-5 {{ headClass }}">
+        <ion-text><h1 class="p-2">お手持ちのクーポンを選択して、「次へ」をタッチしてください</h1></ion-text>
+      </ion-header>
+      <ion-list class="p-0">
+        <ion-row class="pr-3 pl-3 mb-3">
+          <ion-col *ngFor="let p of couponList | paginate: { id: 'listing_pagination',
+            itemsPerPage: 10,
+            currentPage: page,
+            totalItems: totalRecords }" size="2.4">
+            <!-- <ion-card *ngFor="let p of itemList "> -->
+            <ion-card (click)="addToCartCoupon(p)" class="item-card coupon-card" id="coupon-{{p.id}}">
+              <ion-card-content class="item-content">
+                <!-- <img class="product-image" src="{{ p.imageUrl }}" alt=""/> -->
+                <ion-row>
+                  <ion-col class="product-name coupon-name">
+                    <ion-label>{{ p.name }}</ion-label>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="product-description">
+                    <ion-label>{{ p.description }}</ion-label>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="product-price ion-text-end">
+                    <ion-label>
+                      {{ "&yen; " + p.discount_price.toLocaleString() }}
+                    </ion-label>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+      <!-- ページネーション -->
+      <div>
+      </div>
+      <!-- フッター -->
+      <ion-footer class="menu-footer ion-no-border">
+        <ion-row>
+          <ion-col size="3">
+            <ion-button (click)="couponCancel()" color="medium" class="btn-h80 m-3">
+              <ion-text class="text-s"><fa-icon icon="times"></fa-icon> キャンセル</ion-text>
+            </ion-button>
+          </ion-col>
+          <ion-col size="9">
+            <pagination-template #p="paginationApi"
+                                 (pageChange)="page = $event"
+                                 id="listing_pagination">
+              <ion-button (click)="p.previous()" [class.button-disabled]="p.isFirstPage()" color="secondary" size="large" class="btn-h80 m-3">
+                <ion-text class="text-s">前のページ</ion-text>
+              </ion-button>
+              <ion-button *ngFor="let page of p.pages" (click)="p.setCurrent(page.value)" [class.button-disabled]="p.getCurrent() === page.value" color="secondary" size="large" class="btn-h80 m-3">
+                <ion-text class="text-s">　{{ page.label }}　</ion-text>
+              </ion-button>
+              <ion-button (click)="p.next()" [class.button-disabled]="p.isLastPage()" color="secondary" size="large" class="btn-h80 m-3">
+                <ion-text class="text-s">次のページ</ion-text>
+              </ion-button>
+            </pagination-template>
+          </ion-col>
+        </ion-row>
+      </ion-footer>
+    </ion-content>
+  </ion-router-outlet>
+</ion-split-pane>

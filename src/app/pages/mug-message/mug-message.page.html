@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border">
+  <ion-text>
+    <!-- <h1 class="p-2">ご注文はこちらからお願いしま<ion-text (click)="backToSettings()">す</ion-text></h1> -->
+  </ion-text>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col size="8">
+        <ion-row>
+          <ion-col>
+            <!-- <ion-text class="text-xl">ホットドリンクは香りを最大限にお楽しみいただくためマグカップでのご提供を推奨しております。よろしいですか。</ion-text> -->
+            <ion-text class="text-l">ホットドリンクは、香りを最大限にお楽しみいただくため、マグカップでのご提供を推奨しております。よろしいですか。</ion-text>
+
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button (click)="orderMug()" expand="block" class="btn-h300 p-3">
+              <ion-text class="text-xl">はい</ion-text>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="orderPaperCup()" expand="block" class="btn-h300 p-3">
+              <ion-text class="text-xl">いいえ</ion-text>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

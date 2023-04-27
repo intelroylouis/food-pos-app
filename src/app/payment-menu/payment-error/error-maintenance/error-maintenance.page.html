@@ -1,0 +1,42 @@
+<ion-header class="ion-no-border mb-5">
+  <ion-text><h1 class="p-2">取引不明エラー</h1></ion-text>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="mb-3">
+      <ion-col size="10" offset="1" class="ion-text-center">
+        <ion-text class="text-xl">店員をお呼びしています。お待ちください。</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mb-3">
+      <ion-col size="10" offset="1" class="">
+        <ion-text class="text-l">取引が不明の状態で終了しました。</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mb-3">
+      <ion-col size="4" offset="4" class="ion-text-center">
+        <ion-item>
+          <ion-label>Password:</ion-label>
+          <ion-input [(ngModel)]="passwordNum" minlength="4" maxlength="4" type="text" required></ion-input>
+        </ion-item>
+        <ion-button (click)="passwordNumInput('1')">1</ion-button>
+        <ion-button (click)="passwordNumInput('2')">2</ion-button>
+        <ion-button (click)="passwordNumInput('3')">3</ion-button>
+        <ion-button (click)="passwordNumInput('4')">4</ion-button>
+        <ion-button (click)="passwordNumInput('5')">5</ion-button>
+        <ion-button (click)="passwordNumInput('6')">6</ion-button>
+        <ion-button (click)="passwordNumInput('7')">7</ion-button>
+        <ion-button (click)="passwordNumInput('8')">8</ion-button>
+        <ion-button (click)="passwordNumInput('9')">9</ion-button>
+        <ion-button (click)="passwordNumInput('9')">0</ion-button>
+        <ion-button (click)="passwordClear()">clear</ion-button>
+        <ion-button (click)="toMaintenanceMenuPassed()" expand="block" color="medium" class="btn-h100">
+          <ion-text class="text-l">店員操作</ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer class="ion-no-border">
+</ion-footer>

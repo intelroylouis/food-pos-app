@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-header class="ion-no-border {{ headClass }}">
+    <ion-text><h1 class="p-2">ご注文は⇒こちらからお願いしま<ion-text (click)="backToSettings()">す</ion-text></h1></ion-text>
+  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8" offset="2">
+        <ion-row>
+          <ion-col>
+            <ion-text class="text-xl">どちらでご利用されますか？</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button (click)="openEatinMessage()" expand="block" class="btn-h300 p-3">
+              <ion-text class="text-xl"><fa-icon icon="utensils"></fa-icon> 店内</ion-text>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="toCouponHome('takeout')" expand="block" class="btn-h300 p-3">
+              <ion-text class="text-xl"><fa-icon icon="shopping-bag"></fa-icon> お持ち帰り</ion-text>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+<!--    <ion-row>-->
+<!--      <ion-col size="8" offset="2">-->
+<!--        <div class="campaign-banner">-->
+<!--          <img src="https://pos-bc1-prod-20210301.s3-ap-northeast-1.amazonaws.com/img/campaign-20210327.jpg" alt="">-->
+<!--        </div>-->
+<!--      </ion-col>-->
+<!--    </ion-row>-->
+  </ion-grid>
+</ion-content>

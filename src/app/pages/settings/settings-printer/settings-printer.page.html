@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>settings-printer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Printer端末番号設定:</ion-label>
+    <ion-select placeholder="Select One" [(ngModel)]="printerNum" required>
+      <ion-select-option value="01">01</ion-select-option>
+      <ion-select-option value="02">02</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button (click)="onSetClick('printerNum', this.printerNum)">プリンター端末番号送信</ion-button>
+
+  <ion-item>
+    <ion-label>連番:</ion-label>
+    <ion-input [(ngModel)]="serialNum" minlength="4" maxlength="4" type="text" required></ion-input>
+  </ion-item>
+  <ion-button (click)="onSetClick('serialNum', this.serialNum)">連番送信</ion-button>
+
+  <!-- <ion-button (click)="onGetClick()">console check</ion-button> -->
+
+  <ion-item>
+    <ion-label>IPアドレス(Kitchen Printer):</ion-label>
+    <ion-input [(ngModel)]="kitchenPrinterIP" type="text" required></ion-input>
+  </ion-item>
+  <ion-button (click)="onSetClick('kitchenPrinterIP', this.kitchenPrinterIP)">IP Address送信</ion-button>
+
+  <ion-item>
+    <ion-label>IPアドレス(CAT端末):</ion-label>
+    <ion-input [(ngModel)]="catIP" type="text" required></ion-input>
+  </ion-item>
+  <ion-button (click)="onSetClick('catIP', this.catIP)">IP Address送信</ion-button>
+
+  <ion-item>
+
+    <!-- <ion-label>不足金額設定:</ion-label>
+    <div *ngFor="let name of nameList | keyvalue">
+    <ion-label>{{ name.key }}円:</ion-label>
+    <ion-select placeholder="Select One" [(ngModel)]="name.value"  required>
+      <ion-select-option *ngFor="let amount of amountLimit" value="amount">{{ amount }}</ion-select-option>
+    </ion-select>
+  </div>
+  <ion-button (click)="setLimitArray()">不足金額設定送信</ion-button> -->
+
+  <ion-label>不足金額設定:</ion-label>
+  <ion-label>1円:</ion-label>
+  <ion-select placeholder="Select One" [(ngModel)]="oneAmount"  required>
+    <ion-select-option *ngFor="let amount of amountLimit" value={{amount}}>{{ amount }}</ion-select-option>
+  </ion-select>
+  <ion-label>5円:</ion-label>
+  <ion-select placeholder="Select One" [(ngModel)]="fiveAmount"  required>
+    <ion-select-option *ngFor="let amount of amountLimit" value={{amount}}>{{ amount }}</ion-select-option>
+  </ion-select>
+  <ion-label>10円:</ion-label>
+  <ion-select placeholder="Select One" [(ngModel)]="tenAmount"  required>
+    <ion-select-option *ngFor="let amount of amountLimit" value={{amount}}>{{ amount }}</ion-select-option>
+  </ion-select>
+  <ion-label>50円:</ion-label>
+  <ion-select placeholder="Select One" [(ngModel)]="fiftyAmount"  required>
+    <ion-select-option *ngFor="let amount of amountLimit" value={{amount}}>{{ amount }}</ion-select-option>
+  </ion-select>
+  <ion-label>100円:</ion-label>
+  <ion-select placeholder="Select One" [(ngModel)]="hundredAmount"  required>
+    <ion-select-option *ngFor="let amount of amountLimit" value={{amount}}>{{ amount }}</ion-select-option>
+  </ion-select>
+  <ion-label>500円:</ion-label>
+  <ion-select placeholder="Select One" [(ngModel)]="fiveHundredAmount"  required>
+    <ion-select-option *ngFor="let amount of amountLimit" value={{amount}}>{{ amount }}</ion-select-option>
+  </ion-select>
+
+
+</ion-item>
+
+<ion-item>
+
+  <ion-label>1000円:</ion-label>
+  <ion-select placeholder="Select One" [(ngModel)]="thousandAmount"  required>
+    <ion-select-option *ngFor="let amount of amountLimit" value={{amount}}>{{ amount }}</ion-select-option>
+  </ion-select>
+  <ion-label>5000円:</ion-label>
+  <ion-select placeholder="Select One" [(ngModel)]="fiveThousandAmount"  required>
+    <ion-select-option *ngFor="let amount of amountLimit" value={{amount}}>{{ amount }}</ion-select-option>
+  </ion-select>
+  <ion-label>10000円:</ion-label>
+  <ion-select placeholder="Select One" [(ngModel)]="tenThousandAmount"  required>
+    <ion-select-option *ngFor="let amount of amountLimit" value={{amount}}>{{ amount }}</ion-select-option>
+  </ion-select>
+
+  <ion-button (click)="setLimitArray()">不足金額設定送信</ion-button>
+
+</ion-item>
+
+
+
+  
+
+
+
+
+
+
+</ion-content>
+<ion-footer>
+  <ion-button (click)="backToSettings()">設定選択画面に戻る</ion-button>
+</ion-footer>

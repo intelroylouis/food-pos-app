@@ -1,0 +1,61 @@
+<ion-content>
+  <ion-header class="ion-no-border mb-5 {{ headClass }}">
+    <ion-text><h1 class="p-2">クレジット決済</h1></ion-text>
+  </ion-header>
+  <ion-grid>
+    <ion-row class="mb-5">
+      <ion-col>
+        <ion-row>
+          <ion-col>
+            <ion-text class="text-l">お会計金額を確認して、<br />決済端末を操作してください</ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <!-- <ion-col size="5">
+        <div class="payment-image">
+          <img src="assets/image/img_credit.jpg" alt="">
+        </div>
+      </ion-col> -->
+      <ion-col size="7">
+        <ion-row class="mb-2">
+          <ion-col size="4"><ion-text class="text-xl">お会計金額</ion-text></ion-col>
+          <ion-col size="4" class="ion-text-end mr-2"><ion-text class="text-xxl">{{ totalPaymentWithTax }} 円</ion-text></ion-col>
+        </ion-row>
+      </ion-col>
+
+      <!-- 注文詳細 -->
+      <ion-col size="5">
+        <div class="payment-image">
+          <app-cart-check></app-cart-check>
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="cancelCredit()" color="medium" class="btn-h80 m-3">
+        <ion-text class="text-s"><fa-icon icon="angle-left"></fa-icon> お支払い方法の選択に戻る</ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="3" class="ion-text-center">
+      <ion-text color="primary" class="text-xl">決済端末<br /><fa-icon icon="caret-down"></fa-icon></ion-text>
+    </ion-col>
+    <ion-col size="3" class="ion-text-center">
+      <ion-text color="medium" class="text-l">QR読取<br /><fa-icon icon="caret-down"></fa-icon></ion-text>
+    </ion-col>
+    <ion-col size="3" class="ion-text-center">
+      <ion-text color="medium" class="text-l">硬貨<br /><fa-icon icon="caret-down"></fa-icon></ion-text>
+    </ion-col>
+    <ion-col size="3" class="ion-text-center">
+      <ion-text color="medium" class="text-l">紙幣<br /><fa-icon icon="caret-down"></fa-icon></ion-text>
+    </ion-col>
+  </ion-row>
+</ion-footer>

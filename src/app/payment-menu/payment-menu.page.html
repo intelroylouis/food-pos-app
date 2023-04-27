@@ -1,0 +1,74 @@
+<ion-content>
+  <ion-header class="ion-no-border {{ headClass }}">
+    <ion-text><h1 class="p-2">お支払い方法をお選びください</h1></ion-text>
+  </ion-header>
+  <ion-grid>
+    <ion-row class="pt-5 mb-3">
+      <ion-col size="10" offset="1">
+        <ion-row>
+          <ion-col size="3">
+            <ion-button (click)="toCashPage()" expand="block" class="btn-h300 m-2">
+              <div>
+                <ion-text class="text-l"><fa-icon icon="coins"></fa-icon></ion-text><br>
+                <ion-text class="text-l ion-text-wrap">現金</ion-text>
+              </div>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button (click)="toCreditPage()" expand="block" class="btn-h300 m-2">
+              <div>
+                <ion-text class="text-l"><fa-icon icon="credit-card"></fa-icon></ion-text><br>
+                <ion-text class="text-l ion-text-wrap">クレジット</ion-text>
+              </div>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button (click)="toICPage()" expand="block" class="btn-h300 m-2">
+              <div>
+                <ion-text class="text-l"><fa-icon icon="subway"></fa-icon></ion-text><br>
+                <ion-text class="text-l ion-text-wrap">交通系<br />電子マネー</ion-text>
+              </div>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button (click)="toQRPage()" expand="block" class="btn-h300 m-2">
+              <div>
+                <ion-text class="text-l"><fa-icon icon="qrcode"></fa-icon></ion-text><br>
+                <ion-text class="text-l ion-text-wrap">バーコード<br />決済</ion-text>
+              </div>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-row>
+          <ion-col size="3"></ion-col>
+          <ion-col size="3">
+            <ion-text class="text-s payment-brand">JCB, VISA, MasterCard</ion-text>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button (click)="toReadValue()" expand="block" class="btn-h100 m-2">
+              <div>
+                <ion-text class="text-l">残高照会</ion-text>
+              </div>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-text class="text-s payment-brand">PayPay, d払い, LINE Pay, au PAY</ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-row>
+    <ion-col size="3">
+      <ion-button (click)="backToMenu()" color="medium" size="large" class="btn-h80 m-3">
+        <ion-text><fa-icon icon="angle-left"></fa-icon> 商品選択へ戻る</ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

@@ -1,0 +1,28 @@
+<ion-content>
+  <ion-header class="ion-no-border {{ headClass }}">
+    <ion-text><h1 class="p-2">クーポンご利用確認</h1></ion-text>
+  </ion-header>
+  <ion-grid>
+    <ion-row class="pt-5 mb-3">
+      <ion-col size="8" offset="2">
+        <ion-row>
+          <ion-col>
+            <ion-text class="text-xl">クーポンをお持ちですか？</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button (click)="toItemMenu()" expand="block" class="btn-h300 p-3">
+              <ion-text class="text-xl">持っていない</ion-text>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="toCouponMenu()" expand="block" class="btn-h300 p-3">
+              <ion-text class="text-xl">持っている</ion-text>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

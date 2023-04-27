@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border mb-5">
+  <ion-text><h1 class="p-2">メンテナンスメニュー > 残高照会</h1></ion-text>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="mb-3">
+      <ion-col size="10" offset="1" class="">
+        <ion-text class="text-l">未了レシートの残高と誤差がないか確認してください。</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mb-3">
+      <ion-col size="10" offset="1" class="">
+        <ion-text class="text-l">残高: {{readValue}} 円</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mb-3">
+      <ion-col size="10" offset="1" class="">
+        <ion-text class="text-l">誤差がある場合、取引は正しく行われています。</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mb-3">
+      <ion-col size="4" offset="4" class="ion-text-center">
+        <ion-button (click)="successPayment()" expand="block" class="btn-h100">
+          <ion-text class="text-l">決済完了</ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mb-3">
+      <ion-col size="10" offset="1" class="">
+        <ion-text class="text-l">誤差がない場合、取引に失敗しています。もう一度ご注文をお願いします。</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mb-3">
+      <ion-col size="4" offset="4" class="ion-text-center">
+        <ion-button (click)="errorPayment()" expand="block" class="btn-h100">
+          <ion-text class="text-l">決済を中止して戻る</ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <div class="hidden">
+    <canvas id="canvas" width="200" height="150"></canvas>
+    <canvas id="canvasFooter" width="200" height="150"></canvas>
+  </div>
+
+</ion-content>

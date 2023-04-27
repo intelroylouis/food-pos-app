@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border mb-5">
+  <ion-text><h1 class="p-2">メンテナンスメニュー</h1></ion-text>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="mb-3">
+      <ion-col size="10" offset="1" class="">
+        <ion-text class="text-l">お客様のICカードで残高照会をおこない、未了レシートの残高と誤差がないか確認してください。</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mb-3">
+      <ion-col size="4" offset="4" class="ion-text-center">
+        <ion-button (click)="readValue()" expand="block" color="medium" class="btn-h100">
+          <ion-text class="text-l">残高照会</ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row class="mb-3">
+      <ion-col size="10" offset="1" class="">
+        <ion-text class="text-l">決済端末の状態がリカバリーモード（レシート再印字画面）の場合、レシート再印刷ボタンを押してください</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mb-3">
+      <ion-col size="4" offset="4" class="ion-text-center">
+        <ion-button (click)="printRetry()" expand="block" color="medium" class="btn-h100">
+          <ion-text class="text-l">レシート再印刷</ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

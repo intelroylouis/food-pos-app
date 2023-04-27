@@ -1,0 +1,106 @@
+
+<ion-content fullscreen>
+  <div class="ion-padding offset-cart-footer">
+    <ion-list>
+      <ion-item *ngFor="let p of cart.slice().reverse()" class="ion-text-wrap">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="9">
+              <ion-text class="text-s">{{ p.name }}</ion-text>
+            </ion-col>
+            <ion-col size="3" class="ion-text-end">
+              <ion-text class="text-s">
+                {{ '&yen;' + (urlId === "/home/takeout" ? (p.amount * p.price02 ).toLocaleString() : (p.amount * p.price01).toLocaleString()) }}
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class=ion-align-items-center>
+            <ion-col size="2">
+              <ion-text class="text-s">数量</ion-text>
+            </ion-col>
+            <ion-col size="2">
+              <ion-button (click)="decreaseCartItem(p)" expand="block" color="secondary" class="btn-h60">
+                <ion-text class="text-s"> <fa-icon icon="minus"></fa-icon> </ion-text>
+              </ion-button>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center">
+              <ion-text class="text-l">{{ p.amount }}</ion-text>
+            </ion-col>
+            <ion-col size="2">
+              <ion-button (click)="increaseCartItem(p)" expand="block" color="secondary" class="btn-h60">
+                <ion-text class="text-s"> <fa-icon icon="plus"></fa-icon> </ion-text>
+              </ion-button>
+            </ion-col>
+            <ion-col size="2"></ion-col>
+            <ion-col size="2">
+              <ion-button (click)="removeCartItem(p)" expand="block" color="secondary" class="btn-h60">
+                <ion-text class="text-s"> <fa-icon icon="times"></fa-icon> </ion-text>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item *ngFor="let p of cartCoupon" class="ion-text-wrap">
+        <ion-grid *ngIf="isCouponMatched(p)">
+          <ion-row>
+            <ion-col size="9">
+              <ion-text class="text-s">{{ p.name }}</ion-text>
+            </ion-col>
+            <ion-col size="3" class="ion-text-end">
+              <ion-text class="text-s">
+                {{ '&yen;-' + (p.discount_price * p.amount).toLocaleString() }}
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class=ion-align-items-center>
+            <ion-col size="2">
+              <ion-text class="text-s">数量</ion-text>
+            </ion-col>
+            <!-- <ion-col size="2">
+              <ion-button (click)="decreaseCartItem(p)" expand="block" color="secondary" class="btn-h60">
+                <ion-text class="text-s"> <fa-icon icon="minus"></fa-icon> </ion-text>
+              </ion-button>
+            </ion-col> -->
+            <ion-col size="2" class="ion-text-center">
+              <ion-text class="text-s">{{ p.amount }}</ion-text>
+            </ion-col>
+            <!-- <ion-col size="2">
+              <ion-button (click)="increaseCartItem(p)" expand="block" color="secondary" class="btn-h60">
+                <ion-text class="text-s"> <fa-icon icon="plus"></fa-icon> </ion-text>
+              </ion-button>
+            </ion-col> -->
+            <ion-col size="2"></ion-col>
+            <!-- <ion-col size="2">
+              <ion-button (click)="removeCartItem(p)" expand="block" color="secondary" class="btn-h60">
+                <ion-text class="text-s"> <fa-icon icon="times"></fa-icon> </ion-text>
+              </ion-button>
+            </ion-col> -->
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+
+  </div>
+</ion-content>
+<ion-footer class="cart-footer ion-no-border">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-text class="text-l m-3 cart-footer-text">合計(税抜)</ion-text>
+      </ion-col>
+      <ion-col size="6" class="ion-text-end">
+        <ion-text class="text-xl m-3">{{ getTotalMinusCoupon() | currency: 'JPY' }}</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="checkout()" expand="block" size="large" class="btn-h100 m-3">
+          <ion-text class="text-xl">お会計へ <fa-icon icon="angle-right"></fa-icon></ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -1,0 +1,78 @@
+<ion-content>
+  <ion-header class="ion-no-border mb-5 {{ headClass }}">
+    <ion-text><h1 class="p-2">現金決済</h1></ion-text>
+  </ion-header>
+  <ion-grid>
+    <ion-row class="mb-5">
+      <ion-col>
+        <ion-row>
+          <ion-col>
+            <ion-text class="text-l">お会計金額を確認して、<br />紙幣および硬貨を入れ最後に「おわり」をタッチしてください</ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <!-- <ion-col size="5">
+        <div class="payment-image">
+          <img src="assets/image/img_cash.jpg" alt="">
+        </div>
+      </ion-col> -->
+      <ion-col size="7">
+        <ion-row class="mb-2">
+          <ion-col size="4"><ion-text class="text-xl">お会計金額</ion-text></ion-col>
+          <ion-col size="4" class="ion-text-end mr-2"><ion-text class="text-xxl">{{ totalPaymentWithTaxString }} 円</ion-text></ion-col>
+        </ion-row>
+        <ion-row class="mb-2">
+          <ion-col size="4"><ion-text class="text-xl">お預かり</ion-text></ion-col>
+          <ion-col size="4" class="ion-text-end mr-2"><ion-text class="text-xl">{{ depositAmount.value.toLocaleString() }} 円</ion-text></ion-col>
+        </ion-row>
+        <ion-row class="mb-2">
+          <ion-col size="4"><ion-text class="text-xl">おつり</ion-text></ion-col>
+          <ion-col size="4" class="ion-text-end mr-2"><ion-text class="text-xl">{{ dispenseAmount.value.toLocaleString() }} 円</ion-text></ion-col>
+        </ion-row>
+        <ion-row class="mb-2">
+          <ion-col size="8" offset="2">
+            <ion-button (click)="endCashChanger()" id="cash-end-button"
+                        disabled = "{{ (depositAmount.value - totalPaymentWithTax)<0 }}"
+                        expand="block" class="btn-h200 m-3">
+              <ion-text class="text-xl">おわり <fa-icon icon="angle-right"></fa-icon></ion-text>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <!-- 注文詳細 -->
+      <ion-col size="5">
+        <!-- <div class="payment-image">
+          <img src="assets/image/img_cash.jpg" alt="">
+        </div> -->
+        <app-cart-check></app-cart-check>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="backToPaymentMenu()" color="medium" class="btn-h80 m-3" id="cash-cancel-button">
+        <ion-text class="text-s"><fa-icon icon="angle-left"></fa-icon> お支払い方法の選択に戻る</ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="3" class="ion-text-center">
+      <ion-text color="medium" class="text-l">決済端末<br /><fa-icon icon="caret-down"></fa-icon></ion-text>
+    </ion-col>
+    <ion-col size="3" class="ion-text-center">
+      <ion-text color="medium" class="text-l">QR読取<br /><fa-icon icon="caret-down"></fa-icon></ion-text>
+    </ion-col>
+    <ion-col size="3" class="ion-text-center">
+      <ion-text color="primary" class="text-xl">硬貨<br /><fa-icon icon="caret-down"></fa-icon></ion-text>
+    </ion-col>
+    <ion-col size="3" class="ion-text-center">
+      <ion-text color="primary" class="text-xl">紙幣<br /><fa-icon icon="caret-down"></fa-icon></ion-text>
+    </ion-col>
+  </ion-row>
+</ion-footer>

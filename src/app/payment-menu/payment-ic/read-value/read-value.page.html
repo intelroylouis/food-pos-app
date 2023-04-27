@@ -1,0 +1,20 @@
+<ion-header class="ion-no-border mb-5">
+  <ion-text><h1 class="p-2">交通系電子マネー > 残高照会</h1></ion-text>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="mb-3">
+      <ion-col size="10" offset="1" class="">
+        <ion-text class="text-l">残高: {{readValue}} 円</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mb-3">
+      <ion-col size="4" offset="4" class="ion-text-center">
+        <ion-button (click)="backToPaymentMenu()" expand="block" color="medium" class="btn-h100">
+          <ion-text class="text-l">戻る</ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
